@@ -4,15 +4,15 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "anime")
-public class anime {
+public class Anime {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_anime")
     private Long id;
     private String name;
-    public anime(){
+    public Anime(){
     }
 
-    public anime(String name){
+    public Anime(String name){
         this.name = name;
     }
 
