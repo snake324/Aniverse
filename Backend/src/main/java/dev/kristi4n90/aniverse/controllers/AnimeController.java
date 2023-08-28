@@ -2,31 +2,64 @@ package dev.kristi4n90.aniverse.controllers;
 
 import dev.kristi4n90.aniverse.models.Anime;
 import dev.kristi4n90.aniverse.services.AnimeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/anime")
 public class AnimeController {
 
-    AnimeService service;
+    private final AnimeService animeService;
 
-    public AnimeController(AnimeService service) {
-        this.service = service;
+    public AnimeController(AnimeService animeService) {
+        this.animeService = animeService;
     }
 
-    @GetMapping(path = "/animes")
-    public List<Anime> index() {
-
-        List<Anime> animes = service.getAll();
-        return animes;
+    @GetMapping
+    public ResponseEntity<List<Anime>> getAllAnime() {
+        List<Anime> animeList = animeService.getAllAnime();
+        return new ResponseEntity<>(animeList, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/animes/{id}")
-    public Anime show(@PathVariable("id") Long id) {
-        Anime anime = service.findById(id);
-        return anime;
+    @GetMapping("/{id}")
+    public ResponseEntity<Anime> getAnimeById(@PathVariable Long id) {
+        Anime anime = animeService.getAnimeById(id);
+        if (anime != null) {
+            return new ResponseEntity<>(anime, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<Anime> createAnime(@RequestBody Anime anime) {
+        Anime createdAnime = animeService.createAnime(anime);
+        return new ResponseEntity<>(createdAnime, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Anime> updateAnime(@PathVariable Long id, @RequestBody Anime anime) {
+        Anime updatedAnime = animeService.updateAnime(id, anime);
+        if (updatedAnime != null) {
+            return new ResponseEntity<>(updatedAnime, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAnime(@PathVariable Long id) {
+        boolean deleted = animeService.deleteAnime(id);
+        if (deleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
+
+
+
