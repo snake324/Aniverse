@@ -32,13 +32,13 @@ public class GenreController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Genre> createGenre(@RequestBody Genre genre) {
         Genre createdGenre = genreService.createGenre(genre);
         return new ResponseEntity<>(createdGenre, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Genre> updateGenre(@PathVariable Long id, @RequestBody Genre genre) {
         Genre updatedGenre = genreService.updateGenre(id, genre);
         if (updatedGenre != null) {
@@ -48,7 +48,7 @@ public class GenreController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteGenre(@PathVariable Long id) {
         boolean deleted = genreService.deleteGenre(id);
         if (deleted) {

@@ -34,13 +34,13 @@ public class AnimeController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<Anime> createAnime(@RequestBody Anime anime) {
         Anime createdAnime = animeService.createAnime(anime);
         return new ResponseEntity<>(createdAnime, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Anime> updateAnime(@PathVariable Long id, @RequestBody Anime anime) {
         Anime updatedAnime = animeService.updateAnime(id, anime);
         if (updatedAnime != null) {
@@ -50,7 +50,7 @@ public class AnimeController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteAnime(@PathVariable Long id) {
         boolean deleted = animeService.deleteAnime(id);
         if (deleted) {
