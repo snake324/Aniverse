@@ -17,9 +17,19 @@ public class Anime {
 
     @Column(name = "synopsis", columnDefinition = "VARCHAR(3000)")
     public String synopsis;
-    public Anime(String name){
+
+    @Column(name ="imgUrl")
+    public String imgUrl;
+
+    @Column(name = "trailer")
+    public String trailer;
+
+
+    public Anime(String name, String synopsis, String imgUrl, String trailer){
         this.name = name;
         this.synopsis = synopsis;
+        this.imgUrl = imgUrl;
+        this.trailer = trailer;
     }
 
     public Long getIdanime() {
@@ -44,5 +54,21 @@ public class Anime {
 
     public String getSynopsis() {
         return synopsis;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public Long getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(Long trailer) {
+        this.trailer = trailer;
     }
 }
