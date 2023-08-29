@@ -22,6 +22,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { ListsComponent } from './components/lists/lists.component';
 import { MylistsComponent } from './views/mylists/mylists.component';
 import { UserdetailsComponent } from './components/userdetails/userdetails.component';
+import { AllanimesComponent } from './views/allanimes/allanimes.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { UserdetailsComponent } from './components/userdetails/userdetails.compo
     FiltersComponent,
     ListsComponent,
     MylistsComponent,
-    UserdetailsComponent
+    UserdetailsComponent,
+    AllanimesComponent
   ],
   imports: [
     CommonModule,

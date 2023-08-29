@@ -11,6 +11,7 @@ import { MylistsComponent } from './views/mylists/mylists.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { Top100Component } from './views/top100/top100.component';
 import { UpcomingComponent } from './views/upcoming/upcoming.component';
+import { AllanimesComponent } from './views/allanimes/allanimes.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
     { path: 'mylists/:id', component: MylistsComponent},
     { path: 'profile/:id', component: ProfileComponent},
     { path: 'top100', component: Top100Component},
-    { path: 'upcoming', component: UpcomingComponent}
+    { path: 'upcoming', component: UpcomingComponent},
+    { path: 'allanimes', component: AllanimesComponent}
 ];
 
 @NgModule({
