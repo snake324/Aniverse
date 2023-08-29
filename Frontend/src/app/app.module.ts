@@ -10,6 +10,7 @@ import { DictionaryComponent } from './global/dictionary/dictionary.component';
 import { ProfilemodalComponent } from './global/profilemodal/profilemodal.component';
 import { AnimesModule } from './animes/animes.module';
 import { UserFormsModule } from './user-forms/user-forms.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserFormsModule } from './user-forms/user-forms.module';
     BrowserModule,
     AppRoutingModule,
     AnimesModule,
-    UserFormsModule
+    UserFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

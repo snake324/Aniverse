@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AnimeService {
 
-  private apiUrl = 'http://localhost:4000/events';
+  private apiUrl = 'http://localhost:4000/anime';
 
   constructor(private http: HttpClient) { }
 
