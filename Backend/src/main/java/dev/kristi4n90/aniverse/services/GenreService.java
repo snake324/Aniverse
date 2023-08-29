@@ -3,12 +3,13 @@ package dev.kristi4n90.aniverse.services;
 import dev.kristi4n90.aniverse.models.Genre;
 import dev.kristi4n90.aniverse.repositories.GenreRepository;
 import jakarta.annotation.PostConstruct;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class GenreService {
 
     private final GenreRepository genreRepository;
@@ -34,7 +35,7 @@ public class GenreService {
         }
     }
 
-    public boolean deleteAnime(Long id){
+    public boolean deleteGenre(Long id){
         if (getGenreById(id) != null) {
             genreRepository.deleteById(id);
             return true;
