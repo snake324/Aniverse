@@ -24,12 +24,31 @@ public class Anime {
     @Column(name = "trailer")
     public String trailer;
 
+    @Column(name = "studios")
+    public String studios;
 
-    public Anime(String name, String synopsis, String imgUrl, String trailer){
+    @Column(name = "episodes")
+    public String episodes;
+
+    @Column(name = "duration")
+    public String duration;
+
+    @Column(name = "premiered")
+    public String premiered;
+
+    @Column(name = "type")
+    public  String type;
+
+    public Anime(String name, String synopsis, String imgUrl, String trailer, String studios, String episodes, String duration, String premiered, String type){
         this.name = name;
         this.synopsis = synopsis;
         this.imgUrl = imgUrl;
         this.trailer = trailer;
+        this.studios = studios;
+        this.episodes = episodes;
+        this.duration = duration;
+        this.premiered = premiered;
+        this.type = type;
     }
 
     public Long getIdanime() {
@@ -64,11 +83,51 @@ public class Anime {
         this.imgUrl = imgUrl;
     }
 
-    public Long getTrailer() {
+    public String getTrailer() {
         return trailer;
     }
 
-    public void setTrailer(Long trailer) {
+    public void setTrailer(String trailer) {
         this.trailer = trailer;
+    }
+
+    public String getStudios() {
+        return studios;
+    }
+
+    public void setStudios(String studios) {
+        this.studios = studios;
+    }
+
+    public String getEpisodes() {
+        return episodes;
+    }
+
+    public void setEpisodes(String episodes) {
+        this.episodes = episodes;
+    }
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public String getPremiered() {
+        return premiered;
+    }
+
+    public void setPremiered(String premiered) {
+        this.premiered = premiered;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
