@@ -1,6 +1,8 @@
+<diV class="card-container">
 <div class="card" *ngFor="let anime of animeData" style="width: 18rem;">
-    <img [src]="'../assets'" class="card-img-top" alt="Anime image">
+    <img [src]="'../assets' + anime.imgUrl" class="card-img-top" alt="Anime image">
     <div class="card-body">
       <p class="card-text">{{anime.name}}</p>
     </div>
 </div>
+</diV>
