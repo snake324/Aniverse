@@ -1,10 +1,13 @@
 package dev.kristi4n90.aniverse.services;
 
 import dev.kristi4n90.aniverse.models.Anime;
+import dev.kristi4n90.aniverse.models.Genre;
 import dev.kristi4n90.aniverse.repositories.AnimeRepository;
+import dev.kristi4n90.aniverse.repositories.GenreRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -12,9 +15,11 @@ import java.util.Optional;
 @Service
 public class AnimeService {
     private final AnimeRepository animeRepository;
+    private final GenreRepository genreRepository;
 
-    public AnimeService(AnimeRepository animeRepository) {
+    public AnimeService(AnimeRepository animeRepository, GenreRepository genreRepository) {
         this.animeRepository = animeRepository;
+        this.genreRepository = genreRepository;
     }
 
     public List<Anime> getAllAnime() {
@@ -49,6 +54,7 @@ public class AnimeService {
 
     @PostConstruct
     public void insertInitialData() {
+        List<Genre> genres = genreRepository.findAll();
         List<Anime> animeList = Arrays.asList(
                 new Anime("One Piece", "One Piece narra la historia de un joven llamado Monkey D. Luffy, que inspirado por su amigo pirata Shanks, comienza un viaje para alcanzar su sueño, ser el Rey de los piratas, para lo cual deberá encontrar el tesoro One Piece dejado por el anterior rey de los piratas Gol D. Roger.",
                         "/images/onepiece.jpg", "https://www.youtube.com/watch?v=6_OuVgpigfU", "Toei Animation", "1073", "24", "Fall 1999", "TV"),
@@ -81,6 +87,52 @@ public class AnimeService {
                 new Anime("Shaman King: Flowers", "Shaman King Flowers se lleva a cabo cerca de 16 años después de la pelea de chamanes. El personaje principal de la historia es Asakura Hana, hijo de Yoh Asakura y Anna Asakura.Hana ha crecido hasta convertirse en un niño perezoso y brutal. No se preocupa por sus estudios, se salta las clases, se mete en peleas entre pandillas y se siente muy aburrido de su vida cotidiana. Todo eso cambia cuando los miembros de la familia de la rama, Asakura Luca y Asakura Yohane, llegan a desafiar y matar a Hana y su padre Yoh para tomar su lugar como la casa principal. ",
                         "/images/SHKF.jpg", "https://www.youtube.com/watch?v=_IibHdCX7Nk", "Bridge", "Unknown", "Unknown", "Winter 2024", "TV")
         );
-        animeRepository.saveAll(animeList);
+        for (Anime anime : animeList) {
+                List<Genre> animeGenres = new ArrayList<>();
+                if (!genres.isEmpty()) {
+                    if (anime.getName().equals("One Piece")) {
+                        Genre actionGenre = genreRepository.findById(1L).orElse(null);
+                        if (actionGenre != null) {
+                            animeGenres.add(actionGenre);
+                        }
+                        Genre adventureGenre = genreRepository.findById(2L).orElse(null);
+                        if (adventureGenre != null) {
+                            animeGenres.add(adventureGenre);
+                        }
+                        Genre fantasyGenre = genreRepository.findById(8L).orElse(null);
+                        if (fantasyGenre != null) {
+                            animeGenres.add(fantasyGenre);
+                        }
+                    } else if (anime.getName().equals("Dragon Ball")) {
+                        Genre actionGenre = genreRepository.findById(1L).orElse(null);
+                        if (actionGenre != null) {
+                            animeGenres.add(actionGenre);
+                        }
+                        Genre adventureGenre = genreRepository.findById(2L).orElse(null);
+                        if (adventureGenre != null) {
+                            animeGenres.add(adventureGenre);
+                        }
+                        Genre comedyGenre = genreRepository.findById(6L).orElse(null);
+                        if (comedyGenre != null) {
+                            animeGenres.add(comedyGenre);
+                        }
+                        Genre fantasyGenre = genreRepository.findById(8L).orElse(null);
+                        if (fantasyGenre != null) {
+                            animeGenres.add(fantasyGenre);
+                        }
+                    } else if (anime.getName().equals("Yu Yu Hakusho")) {
+                        Genre actionGenre = genreRepository.findById(1L).orElse(null);
+                        if (actionGenre != null) {
+                            animeGenres.add(actionGenre);
+                        }
+                        Genre fantasyGenre = genreRepository.findById(8L).orElse(null);
+                        if (fantasyGenre != null) {
+                            animeGenres.add(fantasyGenre);
+                        }
+                    }              
+                }
+                anime.setGenres(animeGenres);
+            }
+    animeRepository.saveAll(animeList);
     }
 }

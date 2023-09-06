@@ -1,5 +1,7 @@
 package dev.kristi4n90.aniverse.models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,6 +12,17 @@ public  class Genre {
 
     @Column(name = "genre")
     public String genre;
+
+    @ManyToMany(mappedBy = "genres", cascade = {CascadeType.MERGE})
+    private List<Anime> animes;
+
+    public List<Anime> getAnimes() {
+        return animes;
+    }
+
+    public void setAnimes(List<Anime> animes) {
+        this.animes = animes;
+    }
 
     public Genre(String genre){
         this.genre= genre;
