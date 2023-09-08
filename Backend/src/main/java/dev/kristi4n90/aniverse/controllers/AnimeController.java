@@ -38,7 +38,7 @@ public class AnimeController {
     public ResponseEntity<Anime> createAnime(@RequestBody Anime anime) {
         Anime createdAnime = animeService.createAnime(anime);
         return new ResponseEntity<>(createdAnime, HttpStatus.CREATED);
-    }
+    }    
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Anime> updateAnime(@PathVariable Long id, @RequestBody Anime anime) {
