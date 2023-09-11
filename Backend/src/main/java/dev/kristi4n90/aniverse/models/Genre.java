@@ -3,9 +3,12 @@ package dev.kristi4n90.aniverse.models;
 import java.util.List;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "genre")
+@NoArgsConstructor
+
 public  class Genre {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long idgenre;

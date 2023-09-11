@@ -12,14 +12,14 @@ import java.util.List;
 @RequestMapping("/genre")
 public class GenreController {
 
-    private final GenreService genreService;
+    private GenreService genreService;
 
     public GenreController(GenreService genreService) { this.genreService = genreService;};
 
     @GetMapping
-    public ResponseEntity<List<Genre>> getAllGenre() {
+    public List<Genre> getAllGenre() {
         List<Genre> genreList = genreService.getAllGenre();
-        return new ResponseEntity<>(genreList, HttpStatus.OK);
+        return genreList;
     }
 
     @GetMapping("/{id}")
