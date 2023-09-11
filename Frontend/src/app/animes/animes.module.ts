@@ -23,6 +23,7 @@ import { ListsComponent } from './components/lists/lists.component';
 import { MylistsComponent } from './views/mylists/mylists.component';
 import { UserdetailsComponent } from './components/userdetails/userdetails.component';
 import { AllanimesComponent } from './views/allanimes/allanimes.component';
+import { DetailcardsComponent } from './components/detailcards/detailcards.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { AllanimesComponent } from './views/allanimes/allanimes.component';
     ListsComponent,
     MylistsComponent,
     UserdetailsComponent,
-    AllanimesComponent
+    AllanimesComponent,
+    DetailcardsComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;" *ngIf="anime" id="details-card">
+    <img [src]="'../assets' + anime.imgUrl" class="card-img-top" alt="...">
+    <div class="card-body">
+        <h3 class="card-title">{{anime.name}}</h3>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Type:</strong> {{anime.type}}</li>
+        <li class="list-group-item"><strong>Premiered:</strong> {{anime.premiered}}</li>
+        <li class="list-group-item"><strong>Studios:</strong> {{anime.studios}}</li>
+        <li class="list-group-item"><strong>Genres:</strong> {{anime.genre}}</li>
+        <li class="list-group-item"><strong>Episodes:</strong> {{anime.episodes}}</li>
+        <li class="list-group-item"><strong>Duration:</strong> {{anime.duration}} min per ep.</li>
+    </ul>
+</div>

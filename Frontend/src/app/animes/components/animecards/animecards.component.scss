@@ -3,6 +3,11 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 5%;
+
+    a {
+        text-decoration: none;
+        color: #333;
+    }
     
     .card {
         margin: 0 0.5rem;

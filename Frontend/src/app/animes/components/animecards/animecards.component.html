@@ -1,8 +1,10 @@
-<diV class="card-container">
-<div class="card" *ngFor="let anime of animeData" style="width: 18rem;">
-    <img [src]="'../assets' + anime.imgUrl" class="card-img-top" alt="Anime image">
-    <div class="card-body">
-      <p class="card-text">{{anime.name}}</p>
-    </div>
+<div class="card-container">
+  <div class="card" *ngFor="let anime of animeData" style="width: 18rem;">
+    <a [routerLink]="['/details', anime.idanime]">
+      <img [src]="'../assets' + anime.imgUrl" class="card-img-top" alt="Anime image">
+      <div class="card-body">
+        <p class="card-text">{{anime.name}}</p>
+      </div>
+    </a>
+  </div>
 </div>
-</diV>
