@@ -7,7 +7,7 @@
         <li class="list-group-item"><strong>Type:</strong> {{anime.type}}</li>
         <li class="list-group-item"><strong>Premiered:</strong> {{anime.premiered}}</li>
         <li class="list-group-item"><strong>Studios:</strong> {{anime.studios}}</li>
-        <li class="list-group-item"><strong>Genres:</strong> {{anime.genre}}</li>
+        <li class="list-group-item" *ngIf="formattedGenres"><strong>Genres:</strong> {{ formattedGenres }}</li>
         <li class="list-group-item"><strong>Episodes:</strong> {{anime.episodes}}</li>
         <li class="list-group-item"><strong>Duration:</strong> {{anime.duration}} min per ep.</li>
     </ul>

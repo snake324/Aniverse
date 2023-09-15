@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AnimeService } from '../../service/anime.service';
 import { Anime } from '../../models/anime.model';
+import { GenreService } from '../../service/genre/genre.service';
+import { Genre } from '../../models/genre.model';
 
 @Component({
   selector: 'app-detailcards',
@@ -10,12 +12,15 @@ import { Anime } from '../../models/anime.model';
 })
 export class DetailcardsComponent {
 
-anime: Anime | undefined;
+  anime: Anime | undefined;
+  genres: Genre[] | undefined;
+  formattedGenres: string | undefined; // Nueva propiedad para la cadena de géneros formateada
 
-constructor(
-  private route: ActivatedRoute,
-  private animeService: AnimeService
-) {}
+  constructor(
+    private route: ActivatedRoute,
+    private animeService: AnimeService,
+    private genreService: GenreService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -30,7 +35,15 @@ constructor(
     this.animeService.getAnime(animeId)
       .subscribe(anime => {
         this.anime = anime;
+
+        if (anime.idanime) {
+          this.genreService.getGenresByAnimeId(anime.idanime)
+            .subscribe(genres => {
+              this.genres = genres;
+              this.formattedGenres = this.genres.map(genre => genre.genre).join(', ');
+            });
+        }
       });
   }
-  
+
 }

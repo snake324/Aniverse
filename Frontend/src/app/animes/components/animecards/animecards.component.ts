@@ -15,10 +15,10 @@ export class AnimecardsComponent implements OnInit{
   constructor(private router: Router, private animeService: AnimeService) { }
 
   ngOnInit() {
-    this.fetchEventsData();
+    this.fetchAnimesData();
   }
 
-  fetchEventsData() {
+  fetchAnimesData() {
     this.animeService.getAnimes().subscribe(
       (data: Anime[]) => {
         this.animeData = data;

@@ -9,5 +9,4 @@ export interface Anime {
     studios: string;
     trailer: string;
     type: string;
-    genre: string;
- }
+}
