@@ -3,6 +3,8 @@ package dev.kristi4n90.aniverse.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
@@ -43,6 +45,7 @@ public class Anime {
     public  String type;
 
     @ManyToMany(cascade = {CascadeType.MERGE})
+    @JsonIgnore
     @JoinTable(
         name = "anime_genre",
         joinColumns = @JoinColumn(name = "anime_id"),

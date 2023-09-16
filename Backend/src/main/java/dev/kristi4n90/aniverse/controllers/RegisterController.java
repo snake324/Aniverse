@@ -12,7 +12,7 @@ import dev.kristi4n90.aniverse.models.User;
 import dev.kristi4n90.aniverse.services.UserService;
 
 @RestController
-@RequestMapping(path = "/users")
+@RequestMapping(path = "/register")
 public class RegisterController {
 
     UserService service;
@@ -21,7 +21,7 @@ public class RegisterController {
         this.service = service;
     }
 
-    @PostMapping(path = "/register")
+    @PostMapping
     public ResponseEntity<?> register(@RequestBody User user) throws Throwable {
 
         try {

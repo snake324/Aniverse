@@ -22,7 +22,7 @@ public class Role {
     private Long id;
     private String role;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
     List<User> users;
 }

@@ -33,8 +33,8 @@ public class SecurityConfiguration {
                         .logoutUrl("/logout")
                         .deleteCookies("JSESSIONID"))
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/register", "/anime/**").permitAll()
-                    .requestMatchers("/user").hasRole("USER")
+                    .requestMatchers("/register", "/anime/**", "/genre/**").permitAll()
+                    .requestMatchers("/users").hasRole("USER")
                     .anyRequest().authenticated())
                 .httpBasic(withDefaults())
                 .sessionManagement(session -> session

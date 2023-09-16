@@ -13,12 +13,11 @@ import dev.kristi4n90.aniverse.repositories.UserRepository;
 @Service
 public class UserService {
     
-    UserRepository repository;
+    UserRepository userRepository;
     RoleService roleService;
 
-    public UserService(UserRepository repository, RoleService roleService) {
-        this.repository = repository;
-        this.roleService = roleService;
+    public UserService(UserRepository userRepository, RoleService roleService) {
+        this.userRepository = userRepository;
     }
 
     public User save(User user) throws Throwable {
@@ -28,7 +27,7 @@ public class UserService {
 
         this.assignDefaultRole(user);
 
-        return repository.save(user);
+        return userRepository.save(user);
     }
 
     public void assignDefaultRole(User user) throws Throwable {
@@ -39,4 +38,5 @@ public class UserService {
 
         user.setRoles(roles);
     }
+
 }
