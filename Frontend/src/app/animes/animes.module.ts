@@ -7,7 +7,6 @@ import { SearchComponent } from './components/search/search.component';
 import { AnimedetailsComponent } from './components/animedetails/animedetails.component';
 import { HomeComponent } from './views/home/home.component';
 import { DetailsComponent } from './views/details/details.component';
-import { FavoritesComponent } from './views/favorites/favorites.component';
 import { UpcomingComponent } from './views/upcoming/upcoming.component';
 import { Top100Component } from './views/top100/top100.component';
 import { AdmindetailsComponent } from './views/admindetails/admindetails.component';
@@ -32,7 +31,6 @@ import { DetailcardsComponent } from './components/detailcards/detailcards.compo
     AnimedetailsComponent,
     HomeComponent,
     DetailsComponent,
-    FavoritesComponent,
     UpcomingComponent,
     Top100Component,
     AdmindetailsComponent,
