@@ -1,5 +1,8 @@
 package dev.kristi4n90.aniverse.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import dev.kristi4n90.aniverse.models.Role;
@@ -8,14 +11,19 @@ import dev.kristi4n90.aniverse.repositories.RoleRepository;
 @Service
 public class RoleService {
     
-    RoleRepository repository;
+    RoleRepository roleRepository;
 
-    public RoleService(RoleRepository repository) {
-        this.repository = repository;
+    public List<Role> getAllRoles(){
+        return roleRepository.findAll();
     }
 
-    public Role show(Long id) throws Throwable {
-        return repository.findById(id).orElseThrow(() -> new Throwable("Role not found"));
+    public Role getRoleById(Long id){
+        Optional<Role> opt = roleRepository.findById(id);
+        if(opt.isPresent()){
+            return opt.get();
+        }else{
+            return null;
+        }
     }
     
 }

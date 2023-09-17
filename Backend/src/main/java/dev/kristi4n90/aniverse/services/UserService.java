@@ -47,7 +47,7 @@ public class UserService {
 
     public void assignDefaultRole(User user) throws Throwable {
 
-        Role defauRole = roleService.show(2L);
+        Role defauRole = roleService.getRoleById(2L);
         Set<Role> roles = new HashSet<>();
         roles.add(defauRole);
 
