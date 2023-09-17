@@ -16,8 +16,8 @@ export class GenreService {
     return this.http.get<Genre[]>(this.apiUrl);
   }
 
-  getGenre(genreId: string): Observable<Genre> {
-    const url = `${this.apiUrl}/${genreId}`; 
+  getGenre(idgenre: number): Observable<Genre> {
+    const url = `${this.apiUrl}/${idgenre}`; 
     return this.http.get<Genre>(url);
   }
 
