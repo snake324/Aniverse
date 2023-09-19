@@ -8,12 +8,12 @@ import { User } from '../models/user.model';
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:4000/users';
+  private apiUrl = 'http://localhost:4000/login';
 
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/login`, { email, password });
+    return this.http.post<User>(`${this.apiUrl}`, { email, password });
   }
 
 }
