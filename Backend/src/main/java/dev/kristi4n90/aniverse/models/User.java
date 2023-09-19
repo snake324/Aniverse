@@ -41,6 +41,6 @@ public class User {
     @OneToOne
     @JoinColumn(name="profile_id")
     @JsonIgnore
-    private Profile Profile;
+    private Profile profile;
     
 }

@@ -44,7 +44,7 @@ public class GenreService {
         }
     }
 
-    @PostConstruct
+    /*@PostConstruct
     public void insertInitialData() {
         List<Genre> genreList = Arrays.asList(
                 new Genre("Action"),
@@ -67,5 +67,5 @@ public class GenreService {
                 new Genre("Suspense")
         );
         genreRepository.saveAll(genreList);
-    }
+    }*/
 }

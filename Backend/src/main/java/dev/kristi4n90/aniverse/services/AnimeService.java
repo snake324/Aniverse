@@ -47,7 +47,7 @@ public class AnimeService {
         }
     }
 
-    @PostConstruct
+    /*@PostConstruct
     public void insertInitialData() {
         List<Anime> animeList = Arrays.asList(
                 new Anime("One Piece", "One Piece narra la historia de un joven llamado Monkey D. Luffy, que inspirado por su amigo pirata Shanks, comienza un viaje para alcanzar su sueño, ser el Rey de los piratas, para lo cual deberá encontrar el tesoro One Piece dejado por el anterior rey de los piratas Gol D. Roger.",
@@ -82,5 +82,5 @@ public class AnimeService {
                         "/images/SHKF.jpg", "https://www.youtube.com/embed/_IibHdCX7Nk?si=IyFhEZpXCAcwIUtz", "Bridge", "Unknown", "Unknown", "Winter 2024", "TV")
         );
     animeRepository.saveAll(animeList);
-    }
+    }*/
 }

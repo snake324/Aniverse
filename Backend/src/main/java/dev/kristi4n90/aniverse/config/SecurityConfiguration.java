@@ -28,17 +28,18 @@ public class SecurityConfiguration {
 
         http.cors(withDefaults())
                 .csrf(csfr -> csfr.disable())
-                //.formLogin(form -> form.disable())
+                .formLogin(form -> form.disable())
                 .logout(out -> out
                         .logoutUrl("/logout")
                         .deleteCookies("JSESSIONID"))
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/register", "/anime/**", "/genre/**").permitAll()
-                    .requestMatchers("/users").hasRole("USER")
+                    .requestMatchers("/anime/**", "/login/**", "/genre").permitAll()
+                    .requestMatchers("/users/**").hasRole("ADMIN")
                     .anyRequest().authenticated())
                 .httpBasic(withDefaults())
                 .sessionManagement(session -> session
-                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED));
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()));
         return http.build();
     }
 
@@ -48,6 +49,7 @@ public class SecurityConfiguration {
         configuration.setAllowCredentials(true);
         configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(Arrays.asList("*"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
@@ -57,13 +59,13 @@ public class SecurityConfiguration {
     public InMemoryUserDetailsManager userDetailsManager() {
 
         UserDetails luffy = User.builder()
-                .username("luffy")
+                .username("luffy@aniverse.com")
                 .password("{bcrypt}$2a$12$SnIc0lskG/qyHSTWT8vpNOVQyaN5XxO2peQ8mqrepLv41vRv/GHhe")
                 .roles("USER")
                 .build();
 
         UserDetails cristian = User.builder()
-                .username("cristian")
+                .username("cristian@aniverse.com")
                 .password("{bcrypt}$2a$12$S1MB85LjsOxWffqdKo31u.AboEK8MIhKduOjEam3e1n.BCHBENfMW")
                 .roles("ADMIN")
                 .build();
