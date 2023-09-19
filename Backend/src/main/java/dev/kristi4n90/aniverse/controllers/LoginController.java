@@ -21,7 +21,7 @@ public class LoginController {
         Authentication auth = contextHolder.getAuthentication();
         Map<String, String> json = new HashMap<>();
         json.put("message", "Logged");
-        json.put("username", auth.getName());
+        json.put("email", auth.getName());
         json.put("roles", auth.getAuthorities().iterator().next().toString());
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(json);
     }

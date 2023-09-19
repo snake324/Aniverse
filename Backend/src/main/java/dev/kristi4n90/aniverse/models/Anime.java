@@ -44,6 +44,9 @@ public class Anime {
     @Column(name = "type")
     public  String type;
 
+    @OneToMany(mappedBy = "anime")
+    private List<UserPreferences> userPreferences;
+    
     @ManyToMany(cascade = {CascadeType.MERGE})
     @JsonIgnore
     @JoinTable(

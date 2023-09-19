@@ -2,10 +2,8 @@ package dev.kristi4n90.aniverse.services;
 
 import dev.kristi4n90.aniverse.models.Genre;
 import dev.kristi4n90.aniverse.repositories.GenreRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,28 +42,4 @@ public class GenreService {
         }
     }
 
-    /*@PostConstruct
-    public void insertInitialData() {
-        List<Genre> genreList = Arrays.asList(
-                new Genre("Action"),
-                new Genre("Adventure"),
-                new Genre("Avant Garde"),
-                new Genre("Award Winning"),
-                new Genre("Boys Love"),
-                new Genre("Comedy"),
-                new Genre("Drama"),
-                new Genre("Fantasy"),
-                new Genre("Girls Love"),
-                new Genre("Gourmet"),
-                new Genre("Horror"),
-                new Genre("Mystery"),
-                new Genre("Romance"),
-                new Genre("Sci-Fi"),
-                new Genre("Slice of Life"),
-                new Genre("Sports"),
-                new Genre("Supernatural"),
-                new Genre("Suspense")
-        );
-        genreRepository.saveAll(genreList);
-    }*/
 }

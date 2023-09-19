@@ -7,8 +7,8 @@ INSERT INTO profiles (profile_id, profile_img) VALUES (1, '/images/icon-admin-32
 -- Inserting users with profile_id
 INSERT INTO user (id_user, email, password, profile_id)
 VALUES
-    (1, 'cristian', '{bcrypt}$2a$12$S1MB85LjsOxWffqdKo31u.AboEK8MIhKduOjEam3e1n.BCHBENfMW', 1),
-    (2, 'luffy', '{bcrypt}$2a$12$SnIc0lskG/qyHSTWT8vpNOVQyaN5XxO2peQ8mqrepLv41vRv/GHhe', 2);
+    (1, 'cristian@aniverse.com', '{bcrypt}$2a$12$S1MB85LjsOxWffqdKo31u.AboEK8MIhKduOjEam3e1n.BCHBENfMW', 1),
+    (2, 'luffy@aniverse.com', '{bcrypt}$2a$12$SnIc0lskG/qyHSTWT8vpNOVQyaN5XxO2peQ8mqrepLv41vRv/GHhe', 2);
 
 -- Inserting relation into role_users
 INSERT INTO roles_users (role_id, user_id) VALUES (1,1),(2,2);
@@ -38,3 +38,22 @@ VALUES
 
 -- Inserting relation into anime_genre
 INSERT INTO anime_genre (anime_id, genre_id) VALUES (1,1),(1,2),(1,3),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15);
+
+-- Inserting user preferences for 18 animes
+INSERT INTO user_preferences (id_preferences, rating, review, status, profile_id, anime_id)
+VALUES
+    (1, 5, 'Excelente anime, me encantó la historia y los personajes.', 'Watching', 2, 1),
+    (2, 4, 'Buena serie, pero el final me dejó con ganas de más.', 'Completeted', 2, 2),
+    (3, 5, 'Increíble, no puedo esperar para la próxima temporada.', 'Watching', 2, 3),
+    (4, 3, 'Un poco aburrido al principio, pero mejora con el tiempo.', 'Completeted', 2, 4),
+    (5, 5, 'Una obra maestra, definitivamente uno de mis favoritos.', 'Completeted', 2, 5),
+    (6, 4, 'Muy entretenido, los combates son geniales.', 'Completeted', 2, 6),
+    (7, 5, 'Me encanta este anime, lo he visto varias veces.', 'Completeted', 2, 7),
+    (8, 4, 'Un anime clásico que nunca pasa de moda.', 'Completeted', 2, 8),
+    (9, 5, 'La trama me mantuvo intrigado en todo momento.', 'Dropped', 2, 9),
+    (10, 3, 'Algunos episodios son lentos, pero vale la pena verlo.', 'Completeted', 2, 10),
+    (11, 5, 'Uno de los mejores animes que he visto, la animación es asombrosa.', 'Completeted', 2, 11),
+    (12, 4, 'Me gustó mucho, pero espero una segunda temporada.', 'On-Hold', 2, 12),
+    (13, 5, 'Intrigante y emocionante, definitivamente lo recomiendo.', 'Plan to watch', 2, 13),
+    (14, 3, 'Un anime clásico de acción que no decepciona.', 'Plan to watch', 2, 14),
+    (15, 5, 'Una experiencia única, los personajes son inolvidables.', 'Plan to watch', 2, 15)
