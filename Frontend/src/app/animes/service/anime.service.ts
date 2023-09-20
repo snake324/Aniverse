@@ -31,11 +31,11 @@ export class AnimeService {
   }
 
   getAnimeReviews(animeId: string): Observable<Review[]> {
-    return this.http.get<Review[]>(`http://localhost:4000/user_preferences/${animeId}`);
+    return this.http.get<Review[]>(`http://localhost:4000/user-preferences/${animeId}`);
   }
 
   createReview(animeId: string, reviewData: any): Observable<any> {
-    const url = `http://localhost:4000/user_preferences`;
+    const url = `http://localhost:4000/user-preferences`;
     return this.http.post(url, { animeId, reviewData });
   }
 

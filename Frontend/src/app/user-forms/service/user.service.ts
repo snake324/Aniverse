@@ -8,16 +8,30 @@ import { User } from '../models/user.model';
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:4000';
+  private baseUrl = 'http://localhost:4000';
 
-  constructor(private httpClient: HttpClient) { }
+  private actualUser!: User;
+  constructor(private httpClient: HttpClient) {}
+  public registerUser(mail: string, password: string): Observable<any> {
+    const status = true;
 
+    const user = {
+      mail,
+      password,
+      status: status
+    };
+
+    return this.httpClient.post<any>(`${this.baseUrl}/register`, user);
+  }
   public loginUser(mail: string, password: string, headers: HttpHeaders): Observable<any> {
-    return this.httpClient.post<any>(`${this.apiUrl}/login`, {}, { headers, withCredentials: true  });
+    return this.httpClient.post<any>(`${this.baseUrl}/login`, {}, { headers, withCredentials: true  });
   }
 
-  register(email: string, password: string): Observable<User> {
-    return this.httpClient.post<User>(`${this.apiUrl}/register`, { email, password });
+  setUser(user: any) {
+    this.actualUser = user;
+  }
+  getUser(): User {
+    return this.actualUser;
   }
 
 }

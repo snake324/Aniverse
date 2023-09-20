@@ -3,6 +3,7 @@ import { UserService } from '../../service/user.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpHeaders } from '@angular/common/http';
+import { AuthService } from 'src/app/global/service/auth.service';
 
 @Component({
   selector: 'app-loginform',
@@ -18,7 +19,8 @@ export class LoginformComponent {
   constructor(
     private usersService: UserService, 
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
     ) {}
 
   ngOnInit() {
@@ -44,6 +46,7 @@ export class LoginformComponent {
     this.usersService.loginUser(username, password, headers).subscribe(
       (data) => {
         console.log(data);
+        this.authService.setLoggedIn(true);
         this.router.navigate(['/animes/home']);
       },
       (error) => {

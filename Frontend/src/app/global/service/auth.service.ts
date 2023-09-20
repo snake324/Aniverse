@@ -14,7 +14,7 @@ export class AuthService {
 
   setLoggedIn(value: boolean) {
     this.isLoggedIn.next(value);
-    localStorage.setItem('isLoggedIn', value.toString());
+    sessionStorage.setItem('isLoggedIn', value.toString());
   }
 
   public isLoggedIn$(): Observable<boolean> {
