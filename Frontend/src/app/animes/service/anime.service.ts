@@ -47,5 +47,10 @@ export class AnimeService {
     return this.http.get<string[]>(`http://localhost:4000/genre`);
   }
   
+  searchAnimes(searchTerm: string): Observable<Anime[]> {
+    const url = `http://localhost:4000/anime/search?term=${searchTerm}`;
+    return this.http.get<Anime[]>(url);
+  }
+  
   
 }

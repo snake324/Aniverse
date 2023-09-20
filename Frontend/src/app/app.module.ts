@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './global/header/header.component';
 import { FooterComponent } from './global/footer/footer.component';
 import { GuardiansComponent } from './core/guardians/guardians.component';
-import { DictionaryComponent } from './global/dictionary/dictionary.component';
 import { ProfilemodalComponent } from './global/profilemodal/profilemodal.component';
 import { AnimesModule } from './animes/animes.module';
 import { UserFormsModule } from './user-forms/user-forms.module';
@@ -18,7 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     GuardiansComponent,
-    DictionaryComponent,
     ProfilemodalComponent
   ],
   imports: [

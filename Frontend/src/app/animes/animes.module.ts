@@ -22,7 +22,9 @@ import { MylistsComponent } from './views/mylists/mylists.component';
 import { UserdetailsComponent } from './components/userdetails/userdetails.component';
 import { AllanimesComponent } from './views/allanimes/allanimes.component';
 import { DetailcardsComponent } from './components/detailcards/detailcards.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     AnimesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AnimesModule { }
