@@ -1,14 +1,14 @@
 <header>
   <nav class="navbar navbar-light">
       <a class="navbar-brand" href="#">
-        <img src="assets/images/logo.PNG" alt="Logo">
+        <img class="logo" src="assets/images/logo.PNG" alt="Logo">
       </a>
       <h1>ANIVERSE</h1>
       <div *ngIf="!isLoggedIn">
         <a class="btn btn-primary" href="/user-forms/login">Login</a>
       </div>
       <div *ngIf="isLoggedIn">
-        <img src="assets/images/straw-hat.png" alt="Imagen de perfil">
+        <img src="assets/images/straw-hat.png" alt="Imagen de perfil" class="avatar">
       </div>
   </nav>
 </header>

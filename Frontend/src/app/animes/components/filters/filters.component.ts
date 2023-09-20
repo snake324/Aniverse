@@ -8,7 +8,7 @@ import { AnimeService } from '../../service/anime.service';
 })
 export class FiltersComponent implements OnInit {
   availableGenres: string[] = [];
-  selectedGenres: string[] = [];
+  activeGenres: string[] = []; 
 
   constructor(private animeService: AnimeService) {}
 
@@ -19,12 +19,12 @@ export class FiltersComponent implements OnInit {
   }
 
   toggleGenre(genre: string): void {
-    const index = this.selectedGenres.indexOf(genre);
+    const index = this.activeGenres.indexOf(genre);
 
     if (index !== -1) {
-      this.selectedGenres.splice(index, 1);
+      this.activeGenres.splice(index, 1);
     } else {
-      this.selectedGenres.push(genre);
+      this.activeGenres.push(genre);
     }
   }
 }

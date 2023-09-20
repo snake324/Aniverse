@@ -10,12 +10,12 @@
                 <div class="container">
                     <div class="row">
                       <div class="col-sm">
-                        NOTA Ranked #?
+                        SCORE Ranked #?
                       </div>
                       <div class="col-sm">
                         <div class="btn-group">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Nota
+                                Score
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">1</a></li>
@@ -34,7 +34,7 @@
                       <div class="col-sm">
                         <div class="btn-group">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                +Añadir a la lista
+                                +Add to list
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Plan to watch</a></li>
@@ -97,7 +97,7 @@
                         <label for="status">Status:</label>
                         <input type="text" id="status" formControlName="status" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-primary">Enviar Revisión</button>
+                    <button type="submit" class="btn btn-primary">Send Review</button>
                 </form>
                 <div *ngIf="reviews.length > 0">
                     <h3>Reviews</h3>
@@ -108,7 +108,7 @@
                     </ul>
                   </div>
                   <div *ngIf="reviews.length === 0">
-                    <p>No hay revisiones disponibles para este anime.</p>
+                    <p>There are no reviews available for this anime.</p>
                   </div>
             </div>
         </div>

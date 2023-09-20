@@ -22,6 +22,10 @@ export class AnimeService {
     return this.http.get<Anime>(url);
   }
 
+  getAnimesByGenres(genres: string[]): Observable<Anime[]> {
+    return this.http.get<Anime[]>(`${this.apiUrl}/?genres=${genres.join(',')}`);
+  }
+
   saveAnime(animeData: Anime): Observable<Anime> {
     return this.http.post<Anime>(`${this.apiUrl}/create`, animeData);
   }

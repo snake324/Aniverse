@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { AnimesRoutingModule } from './animes-routing.module';
 import { AnimecardsComponent } from './components/animecards/animecards.component';
 import { SearchComponent } from './components/search/search.component';
-import { AnimedetailsComponent } from './components/animedetails/animedetails.component';
 import { HomeComponent } from './views/home/home.component';
 import { DetailsComponent } from './views/details/details.component';
 import { UpcomingComponent } from './views/upcoming/upcoming.component';
@@ -29,7 +28,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AnimecardsComponent,
     SearchComponent,
-    AnimedetailsComponent,
     HomeComponent,
     DetailsComponent,
     UpcomingComponent,
