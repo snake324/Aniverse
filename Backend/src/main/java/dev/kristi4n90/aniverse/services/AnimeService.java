@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AnimeService {
@@ -17,6 +18,15 @@ public class AnimeService {
 
     public List<Anime> getAllAnime() {
         return animeRepository.findAll();
+    }
+
+    
+    public List<Anime> searchByTerm(String searchTerm) {
+        List<Anime> foundAnimes = getAllAnime().stream()
+                .filter(anime -> anime.getName().toLowerCase().contains(searchTerm.toLowerCase()))
+                .collect(Collectors.toList());
+
+        return foundAnimes;
     }
 
     public Anime getAnimeById(Long id) {

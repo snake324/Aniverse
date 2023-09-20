@@ -34,6 +34,12 @@ public class AnimeController {
         }
     }
 
+    @GetMapping("/search")
+    public List<Anime> searchAnime(@RequestParam("term") String searchTerm) {
+        List<Anime> foundAnimes = animeService.searchByTerm(searchTerm);
+        return foundAnimes;
+    }
+
     @PostMapping("/create")
     public ResponseEntity<Anime> createAnime(@RequestBody Anime anime) {
         Anime createdAnime = animeService.createAnime(anime);
