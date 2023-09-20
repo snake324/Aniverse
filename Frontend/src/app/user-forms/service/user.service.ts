@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
 
@@ -8,16 +8,16 @@ import { User } from '../models/user.model';
 })
 export class UserService {
 
-  private apiUrl = 'http://localhost:4000/';
+  private apiUrl = 'http://localhost:4000';
 
-  constructor(private http: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  login(email: string, password: string): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/login`, { email, password });
+  public loginUser(mail: string, password: string, headers: HttpHeaders): Observable<any> {
+    return this.httpClient.post<any>(`${this.apiUrl}/login`, {}, { headers, withCredentials: true  });
   }
 
   register(email: string, password: string): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/register`, { email, password });
+    return this.httpClient.post<User>(`${this.apiUrl}/register`, { email, password });
   }
 
 }

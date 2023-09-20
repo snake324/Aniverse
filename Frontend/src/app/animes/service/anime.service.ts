@@ -38,5 +38,10 @@ export class AnimeService {
     const url = `http://localhost:4000/user_preferences`;
     return this.http.post(url, { animeId, reviewData });
   }
+
+  getGenres(): Observable<string[]> {
+    return this.http.get<string[]>(`http://localhost:4000/genre`);
+  }
+  
   
 }
