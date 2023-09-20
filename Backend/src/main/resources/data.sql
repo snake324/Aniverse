@@ -5,10 +5,10 @@ INSERT INTO roles (id_role, role) VALUES (1, 'ADMIN'),(2, 'USER');
 INSERT INTO profiles (profile_id, profile_img) VALUES (1, '/images/icon-admin-32.jpg'),(2, '/images/straw-hat.png');
 
 -- Inserting users with profile_id
-INSERT INTO user (id_user, email, password, profile_id)
+INSERT INTO user (id_user, mail, password, profile_id)
 VALUES
-    (1, 'cristian@aniverse.com', '{bcrypt}$2a$12$S1MB85LjsOxWffqdKo31u.AboEK8MIhKduOjEam3e1n.BCHBENfMW', 1),
-    (2, 'luffy@aniverse.com', '{bcrypt}$2a$12$SnIc0lskG/qyHSTWT8vpNOVQyaN5XxO2peQ8mqrepLv41vRv/GHhe', 2);
+    (1, 'cristian@aniverse.com', '$2a$12$S1MB85LjsOxWffqdKo31u.AboEK8MIhKduOjEam3e1n.BCHBENfMW', 1),
+    (2, 'luffy@aniverse.com', '$2a$12$SnIc0lskG/qyHSTWT8vpNOVQyaN5XxO2peQ8mqrepLv41vRv/GHhe', 2);
 
 -- Inserting relation into role_users
 INSERT INTO roles_users (role_id, user_id) VALUES (1,1),(2,2);

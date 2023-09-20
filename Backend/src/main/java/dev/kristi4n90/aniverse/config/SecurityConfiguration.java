@@ -5,23 +5,24 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.ArrayList;
+import dev.kristi4n90.aniverse.services.JpaUserDetailsService;
+
 import java.util.Arrays;
-import java.util.Collection;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
+
+        JpaUserDetailsService jpaUserDetailsService;
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
@@ -33,9 +34,7 @@ public class SecurityConfiguration {
                         .logoutUrl("/logout")
                         .deleteCookies("JSESSIONID"))
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/anime/**", "/login/**", "/genre", "/register", "/user_preferences/**").permitAll()
-                    .requestMatchers("/user_preferences/**").hasRole("USER")
-                    .requestMatchers("/users/**").hasRole("ADMIN")
+                    .requestMatchers("/**").permitAll()
                     .anyRequest().authenticated())
                 .httpBasic(withDefaults())
                 .sessionManagement(session -> session
@@ -57,25 +56,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager() {
-
-        UserDetails luffy = User.builder()
-                .username("luffy@aniverse.com")
-                .password("{bcrypt}$2a$12$SnIc0lskG/qyHSTWT8vpNOVQyaN5XxO2peQ8mqrepLv41vRv/GHhe")
-                .roles("USER")
-                .build();
-
-        UserDetails cristian = User.builder()
-                .username("cristian@aniverse.com")
-                .password("{bcrypt}$2a$12$S1MB85LjsOxWffqdKo31u.AboEK8MIhKduOjEam3e1n.BCHBENfMW")
-                .roles("ADMIN")
-                .build();
-
-        Collection<UserDetails> users = new ArrayList<>();
-                users.add(luffy);
-                users.add(cristian);
-
-        return new InMemoryUserDetailsManager(users);
-
+    PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }

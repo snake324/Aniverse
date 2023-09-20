@@ -1,5 +1,6 @@
 package dev.kristi4n90.aniverse.models;
 
+import java.sql.Timestamp;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,9 +31,12 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_user")
     Long id;
-    String email;
+    String mail;
     String password;
 
+    @Column(name="register_date", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    public Timestamp registerDate;
+    
     @ManyToMany(fetch = FetchType.EAGER)
     @JsonIgnore
     @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
