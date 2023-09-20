@@ -23,6 +23,7 @@ import { MylistsComponent } from './views/mylists/mylists.component';
 import { UserdetailsComponent } from './components/userdetails/userdetails.component';
 import { AllanimesComponent } from './views/allanimes/allanimes.component';
 import { DetailcardsComponent } from './components/detailcards/detailcards.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DetailcardsComponent } from './components/detailcards/detailcards.compo
   ],
   imports: [
     CommonModule,
-    AnimesRoutingModule
+    AnimesRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AnimesModule { }

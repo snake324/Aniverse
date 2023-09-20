@@ -6,7 +6,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { UserFormsRoutingModule } from './user-forms-routing.module';
 import { LoginformComponent } from './components/loginform/loginform.component';
 import { RegisterformComponent } from './components/registerform/registerform.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +20,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     UserFormsRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UserFormsModule { }
