@@ -1,7 +1,6 @@
 package dev.kristi4n90.aniverse.controllers;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,13 +21,10 @@ public class RegisterController {
     }
 
     @PostMapping
-    public ResponseEntity<?> register(@RequestBody User user) throws Throwable {
+    public ResponseEntity<User> addUser(@RequestBody User user) throws Throwable {
 
-        try {
-            User userStored = service.save(user);
-            return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(userStored);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
+        User savedUser = service.addUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
     }
+
 }

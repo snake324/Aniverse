@@ -21,9 +21,14 @@ public class UserPreferencesController {
     }
 
     @GetMapping("/{id}")
-    public UserPreferences getUserPreferencesById(@PathVariable Long id) {
-        return userPreferencesService.getUserPreferencesById(id);
-    }
+    public ResponseEntity<?> getUserPreferencesById(@PathVariable Long id) {
+        UserPreferences userPreferences = userPreferencesService.getUserPreferencesById(id);
+        if (userPreferences != null) {
+            return ResponseEntity.ok(userPreferences);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }    
 
     @PostMapping
     public ResponseEntity<UserPreferences> createUserPreferences(@RequestBody UserPreferences userPreferences) {

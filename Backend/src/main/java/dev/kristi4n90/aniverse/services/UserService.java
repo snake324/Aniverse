@@ -1,5 +1,6 @@
 package dev.kristi4n90.aniverse.services;
 
+import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -35,12 +36,14 @@ public class UserService {
         }
     }
 
-    public User save(User user) throws Throwable {
+    public User addUser(User user) throws Throwable {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
         this.assignDefaultRole(user);
+
+        user.setRegisterDate(new Timestamp(System.currentTimeMillis()));
 
         return userRepository.save(user);
     }
@@ -61,5 +64,7 @@ public class UserService {
     public void deleteUser(User user) {
         userRepository.delete(user);
     }
+
+    
 
 }

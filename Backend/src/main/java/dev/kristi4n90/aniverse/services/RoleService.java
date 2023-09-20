@@ -3,6 +3,7 @@ package dev.kristi4n90.aniverse.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dev.kristi4n90.aniverse.models.Role;
@@ -10,7 +11,8 @@ import dev.kristi4n90.aniverse.repositories.RoleRepository;
 
 @Service
 public class RoleService {
-    
+
+    @Autowired
     RoleRepository roleRepository;
 
     public List<Role> getAllRoles(){
