@@ -1,6 +1,9 @@
 package dev.kristi4n90.aniverse.models;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
@@ -16,8 +19,15 @@ public  class Genre {
     @Column(name = "genre")
     public String genre;
 
-    @ManyToMany(mappedBy = "genres", cascade = {CascadeType.MERGE})
-    private List<Anime> animes;
+    @ManyToMany(cascade = {CascadeType.MERGE})
+    @JsonIgnore
+    @JoinTable(
+        name = "anime_genre",
+        joinColumns = @JoinColumn(name = "genre_id"),
+        inverseJoinColumns = @JoinColumn(name = "anime_id")
+    )
+    private List<Anime> animes = new ArrayList<>();
+
 
     public List<Anime> getAnimes() {
         return animes;
