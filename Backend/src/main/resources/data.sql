@@ -37,7 +37,7 @@ VALUES
     ('Shaman King: Flowers', 'Shaman King Flowers takes place about 16 years after the shaman fight. The main character of the story is Asakura Hana, son of Yoh Asakura and Anna Asakura.Hana has grown up to be a lazy and brutal child. He doesnt care about his studies, skips classes, gets into gang fights and feels very bored with his everyday life. All that changes when the branch family members, Asakura Luca and Asakura Yohane, come to challenge and kill Hana and his father Yoh to take their place as the main house. ', '/images/SHKF.jpg', 'https://www.youtube.com/embed/_IibHdCX7Nk?si=IyFhEZpXCAcwIUtz', 'Bridge', 'Unknown', 'Unknown', 'Winter 2024', 'TV');
 
 -- Inserting relation into anime_genre
-INSERT INTO anime_genre (anime_id, genre_id) VALUES (1,1),(1,2),(1,8),(2,1),(2,2),(2,8),(3,1),(3,2),(3,7),(3,8),(4,1),(4,2),(4,6),(4,8),(5,1),(5,2),(5,6),(5,8),(6,1),(6,3),(6,4),(6,7),(6,14),(6,18),(7,7),(8,8),(9,9),(10,10),(11,11),(12,12),(13,13),(14,14),(15,15);
+INSERT INTO anime_genre (anime_id, genre_id) VALUES (1,1),(1,2),(1,8),(2,1),(2,2),(2,8),(3,1),(3,2),(3,7),(3,8),(4,1),(4,2),(4,6),(4,8),(5,1),(5,2),(5,6),(5,8),(6,1),(6,3),(6,4),(6,7),(6,14),(6,18),(7,1),(7,4),(7,14),(8,1),(9,1),(9,8),(10,1),(10,4),(10,8),(11,1),(11,4),(11,8),(12,1),(12,2),(12,8),(13,2),(13,7),(13,8),(14,1),(14,7),(14,17),(15,2),(15,6),(15,17);
 
 -- Inserting user preferences for 18 animes
 INSERT INTO user_preferences (id_preferences, rating, review, status, profile_id, anime_id)
