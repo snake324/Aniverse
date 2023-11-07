@@ -3,6 +3,7 @@ package dev.kristi4n90.aniverse.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,17 +28,37 @@ public class ProfileController {
     }
 
     @GetMapping("/{id}")
-    public Profile getProfileById(@PathVariable Long id) {
-        return profileService.getProfilebyId(id);
+    public ResponseEntity<Profile> getProfileById(@PathVariable Long id) {
+        Profile profile = profileService.getProfilebyId(id);
+        if (profile !=null) {
+            return ResponseEntity.ok(profile);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
     
-    @PutMapping("/update")
-    public Profile updateProfile(@RequestBody Profile profile) {
-        return profileService.updateProfile(profile);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Profile> updateProfile(@PathVariable Long id, @RequestBody Profile updatedProfile) {
+        Profile exisitingProfile = profileService.getProfilebyId(id);
+
+        if(exisitingProfile !=null) {
+            exisitingProfile.setUsername(updatedProfile.getUsername());
+
+            Profile savedProfile = profileService.updateProfile(exisitingProfile);
+            return ResponseEntity.ok(savedProfile);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
-    @DeleteMapping("/delete")
-    public void deleteProfile(@RequestBody Profile profile) {
-        profileService.deleteProfile(profile);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> deleteProfile(@PathVariable Long id) {
+        Profile profile = profileService.getProfilebyId(id);
+        if (profile !=null) {
+            profileService.deleteProfile(profile);
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

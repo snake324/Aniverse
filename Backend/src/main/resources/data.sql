@@ -2,7 +2,9 @@
 INSERT INTO roles (id_role, role) VALUES (1, 'ADMIN'),(2, 'USER');
 
 -- Inserting profiles for users
-INSERT INTO profiles (profile_id, profile_img) VALUES (1, '/images/icon-admin-32.jpg'),(2, '/images/straw-hat.png');
+INSERT INTO profiles (profile_id, username, profile_img) 
+VALUES (1, 'admin', '/images/icon-admin-32.jpg'), 
+       (2, 'mugiwara', '/images/straw-hat.png');
 
 -- Inserting users with profile_id
 INSERT INTO user (id_user, mail, password, profile_id)
